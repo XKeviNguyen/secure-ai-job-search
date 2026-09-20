@@ -1,0 +1,35 @@
+# Example candidate preferences for Secure AI Job Search.
+#
+# Copy this to config/candidate-preferences.yaml and edit it for your own
+# search, or let /setup generate it. The local file is gitignored; only this
+# fictional example is tracked.
+#
+# Every value below is an EXAMPLE, not a product default.
+
+preferred_locations:
+  - Example City
+
+nearby_regions:
+  - Example Nearby District
+
+max_commute_minutes: 60
+
+salary:
+  currency: USD
+  minimum: null
+  target: null
+
+work_authorization:
+  requires_sponsorship: null
+
+languages:
+  - language: English
+    level: "[LANGUAGE_LEVEL]"
+
+career_tracks:
+  - "[CAREER_TRACK]"
+
+employment:
+  priority: "[EMPLOYMENT_PRIORITY]"
+  also_acceptable:
+    - "[EMPLOYMENT_OPTION]"

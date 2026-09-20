@@ -1,0 +1,11 @@
+# Runtime dependency for the authenticated portal layer (loopback Chrome
+# DevTools Protocol control). Pinned exactly; the repo's Python tests and the
+# browser launcher itself are stdlib-only, and websocket is imported lazily so
+# a missing dependency degrades to a clear error rather than an import crash.
+#
+# Install:
+#   python3 -m pip install -r tools/requirements.txt
+#
+# Upgrade procedure: bump the pin here, run `python tools/job_browser.py doctor`
+# (checks installed == pinned), and re-run the test suite.
+websocket-client==1.9.0
