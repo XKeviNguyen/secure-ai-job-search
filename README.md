@@ -4,11 +4,17 @@
 
 # Secure AI Job Search
 
-*An AI-assisted job search framework that keeps your private data private.*
+*An AI-assisted job search framework with a strict credential and browser-session privacy boundary.*
 
 Secure AI Job Search runs on your machine and helps you search, evaluate, rank,
-and prepare job applications - including login-gated job portals - without ever
-handing your credentials, CV, or personal data to a model or a third party.
+and prepare job applications, including login-gated job portals. Credentials,
+passwords, cookies, session tokens and password-manager vault contents are
+deliberately kept out of model context and repository files. Your CV, profile
+and job-application content may be processed by the AI model runtime/provider
+you choose: if you use a cloud provider, review that provider's privacy and
+data-retention policy, and use a compatible local model runtime where supported
+if you need local-only processing. See the
+[AI provider privacy boundary](#ai-provider-privacy-boundary) below.
 
 > Based on and substantially extended from
 > [Mads Lorentzen's ai-job-search](https://github.com/MadsLorentzen/ai-job-search),
@@ -126,6 +132,26 @@ submit manually.
 - Exact hostname and manifest-bound upload checks.
 - No CAPTCHA/MFA bypass; no arbitrary click API.
 - Source documents are immutable and hashed.
+
+## AI provider privacy boundary
+
+This project separates **credential/browser-session data**, which never leaves
+your machine, from **candidate content**, which the model runtime may process:
+
+- **Kept out of model context and repository files:** credentials, passwords,
+  cookies, session tokens, CSRF values, and password-manager (RoboForm) vault
+  contents. The framework never asks for, reads, or stores these. The RoboForm
+  password is never exposed, and cookies/session tokens are not logged or
+  persisted by the framework.
+- **May be processed by your chosen AI model:** candidate CV, profile, cover
+  letters, extracted job postings, and application answers. If you use a cloud
+  model provider, review that provider's privacy and data-retention policy.
+- **Local-only option:** if you need processing to stay on your machine, use a
+  compatible local model runtime where supported.
+- **Browser automation guarantees that still hold:** the dedicated browser
+  profile is used only, there is no raw browser MCP, exact hostname and
+  manifest-bound checks apply, and the irreversible final submission is always
+  human-controlled.
 
 ## Installation (Ubuntu)
 

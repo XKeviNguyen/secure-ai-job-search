@@ -1,9 +1,9 @@
 # CI for the framework itself: LaTeX smoke compiles, skill/command lint,
-# CLI typechecks, and (upstream only) placeholder integrity.
+# CLI typechecks, placeholder integrity, and the exact page-count/content
+# assertions.
 #
-# Fork-friendly by design: forks personalize CLAUDE.md, the skill files, and
-# cv/main_example.tex via /setup, so the placeholder-integrity job and the
-# exact page-count/content assertions run only on the upstream template repo.
+# This public distribution ships as the pristine template, so placeholder
+# integrity and the stock PDF structure assertions run here unconditionally.
 # Compile success, lint correctness, and an extractable PDF text layer are
 # asserted everywhere.
 #
@@ -27,7 +27,7 @@ name: CI
 
 on:
   push:
-    branches: [master]
+    branches: [main, master]
   pull_request:
   workflow_dispatch:
 
